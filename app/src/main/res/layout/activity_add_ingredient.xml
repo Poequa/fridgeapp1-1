@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 카테고리 선택 Spinner -->
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown" />
+
+    <!-- 식재료 선택 Spinner -->
+    <Spinner
+        android:id="@+id/ingredientSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        android:layout_marginTop="8dp" />
+
+    <!-- 수량 입력 -->
+    <EditText
+        android:id="@+id/quantityEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="수량 (예: 1개, 100g 등)"
+        android:inputType="text"
+        android:layout_marginTop="8dp" />
+
+    <!-- 유통기한 선택 버튼 -->
+    <Button
+        android:id="@+id/expiryDateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="유통기한 선택"
+        android:layout_marginTop="8dp" />
+
+    <!-- 재료 추가 버튼 -->
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="재료 추가"
+        android:layout_marginTop="12dp" />
+
+    <!-- 냉장고 비우기 버튼 -->
+    <Button
+        android:id="@+id/clearFridgeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="냉장고 비우기"
+        android:layout_marginTop="12dp" />
+
+    <!-- 재료 목록 보기 버튼 -->
+    <Button
+        android:id="@+id/viewFridgeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="재료 목록 보기"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>

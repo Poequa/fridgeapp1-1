@@ -2,6 +2,8 @@ package com.example.icebox
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -45,6 +47,21 @@ class RecipeChatActivity : AppCompatActivity() {
         }
 
         loadIngredients()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.recipe_chat_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_update_api_key -> {
+                startActivity(Intent(this, GeminiApiSettingsActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun loadIngredients() {

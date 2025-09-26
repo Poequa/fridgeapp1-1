@@ -1,9 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/action_set_api_key"
-        android:title="@string/recipe_chat_api_key_menu"
-        app:showAsAction="never" />
+        android:id="@+id/nav_add"
+        android:title="@string/menu_add_ingredient" />
+    <item
+        android:id="@+id/nav_list"
+        android:title="@string/menu_view_fridge" />
+    <item
+        android:id="@+id/nav_recipe"
+        android:title="@string/menu_recipe_chat" />
+    <item
+        android:id="@+id/nav_gemini_api"
+        android:title="@string/menu_gemini_api_settings" />
 </menu>

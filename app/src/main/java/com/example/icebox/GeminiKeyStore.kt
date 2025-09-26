@@ -3,23 +3,21 @@ package com.example.icebox
 import android.content.Context
 
 object GeminiKeyStore {
-    private const val PREFS_NAME = "gemini_prefs"
-    private const val PREF_KEY_API = "gemini_api_key"
+    private const val PREFS_NAME = "gemini_api_prefs"
+    private const val KEY_API = "gemini_api_key"
 
-    fun getApiKey(context: Context): String {
-        val buildConfigKey = BuildConfig.GEMINI_API_KEY
-        if (buildConfigKey.isNotBlank()) {
-            return buildConfigKey
-        }
-
+    fun getSavedKey(context: Context): String {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        return prefs.getString(PREF_KEY_API, "").orEmpty()
+        return prefs.getString(KEY_API, "")?.trim().orEmpty()
     }
 
-    fun saveApiKey(context: Context, apiKey: String) {
-        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-            .edit()
-            .putString(PREF_KEY_API, apiKey)
-            .apply()
+    fun saveKey(context: Context, apiKey: String) {
+        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        prefs.edit().putString(KEY_API, apiKey.trim()).apply()
+    }
+
+    fun clearKey(context: Context) {
+        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        prefs.edit().remove(KEY_API).apply()
     }
 }

@@ -75,24 +75,36 @@ class RecipeChatActivity : AppCompatActivity() {
             return
         }
 
-        val model = ensureGenerativeModel() ?: return
-
         lifecycleScope.launch {
             val userMessage = getString(R.string.recipe_chat_user_prompt)
             appendMessage(true, userMessage)
             setLoading(true)
             try {
-                val prompt = buildPrompt(items)
-                val response = withContext(Dispatchers.IO) {
-                    model.generateContent(prompt)
+                val model = ensureGenerativeModel()
+                val answer = if (model != null) {
+                    val prompt = buildPrompt(items)
+                    val response = withContext(Dispatchers.IO) {
+                        model.generateContent(prompt)
+                    }
+                    response.text?.trim().orEmpty()
+                } else {
+                    ""
                 }
-                val answer = response.text?.trim().orEmpty()
+
                 if (answer.isBlank()) {
-                    appendMessage(false, getString(R.string.recipe_chat_empty_response))
+                    if (model == null) {
+                        Snackbar.make(
+                            binding.root,
+                            R.string.recipe_chat_missing_api_key_fallback,
+                            Snackbar.LENGTH_LONG
+                        ).show()
+                    }
+                    appendMessage(false, buildFallbackRecipe(items))
                 } else {
                     appendMessage(false, answer)
                 }
             } catch (exception: Exception) {
+                appendMessage(false, buildFallbackRecipe(items))
                 Snackbar.make(binding.root, R.string.recipe_chat_error_generic, Snackbar.LENGTH_LONG).show()
             } finally {
                 setLoading(false)
@@ -105,7 +117,6 @@ class RecipeChatActivity : AppCompatActivity() {
 
         val apiKey = BuildConfig.GEMINI_API_KEY.ifBlank { GeminiKeys.DEFAULT_API_KEY }
         if (apiKey.isBlank()) {
-            Snackbar.make(binding.root, R.string.recipe_chat_missing_api_key, Snackbar.LENGTH_LONG).show()
             return null
         }
 
@@ -117,6 +128,47 @@ class RecipeChatActivity : AppCompatActivity() {
         }
     }
 
+    private fun buildFallbackRecipe(items: List<FridgeItemWithName>): String {
+        val ingredientNames = items.map { it.name }
+        val headlineIngredients = ingredientNames.take(3)
+        val recipeName = when (headlineIngredients.size) {
+            0 -> getString(R.string.recipe_chat_fallback_recipe_name_generic)
+            1 -> getString(R.string.recipe_chat_fallback_recipe_name_single, headlineIngredients.first())
+            2 -> getString(
+                R.string.recipe_chat_fallback_recipe_name_double,
+                headlineIngredients[0],
+                headlineIngredients[1]
+            )
+            else -> getString(
+                R.string.recipe_chat_fallback_recipe_name_multi,
+                headlineIngredients[0],
+                headlineIngredients[1],
+                headlineIngredients[2]
+            )
+        }
+
+        val preparedList = if (ingredientNames.isEmpty()) {
+            getString(R.string.recipe_chat_fallback_no_ingredient_hint)
+        } else {
+            ingredientNames.joinToString(separator = ", ")
+        }
+
+        return buildString {
+            appendLine(getString(R.string.recipe_chat_fallback_notice))
+            appendLine("레시피 이름: $recipeName")
+            appendLine(
+                getString(
+                    R.string.recipe_chat_fallback_step1,
+                    preparedList
+                )
+            )
+            appendLine(getString(R.string.recipe_chat_fallback_step2))
+            appendLine(getString(R.string.recipe_chat_fallback_step3))
+            appendLine(getString(R.string.recipe_chat_fallback_step4))
+            appendLine(getString(R.string.recipe_chat_fallback_step5))
+        }
+    }
+
     private fun buildPrompt(items: List<FridgeItemWithName>): String {
         val ingredientList = items.joinToString(separator = "\n") {
             "- ${it.name} (${it.quantity}개, 유통기한 ${it.expiryDate})"
@@ -124,6 +176,8 @@ class RecipeChatActivity : AppCompatActivity() {
         return buildString {
             appendLine("당신은 한국어를 사용하는 셰프 AI입니다.")
             appendLine("아래 재료만을 중심으로 만들 수 있는 가정식 요리 한 가지를 추천해주세요.")
+            appendLine("굳이 아래 재료들만 통해서 만들지 않아도 됍니다.")
+            appendLine("아래 재료들을 통해서 어떤 음식이 제일 괜찮을지 한 메뉴를 정해서 ")
             appendLine("답변은 반드시 다음 형식을 지키세요:")
             appendLine("레시피 이름: [요리 이름]")
             appendLine("1단계. ...")
@@ -131,7 +185,7 @@ class RecipeChatActivity : AppCompatActivity() {
             appendLine("3단계. ...")
             appendLine("4단계. ...")
             appendLine("5단계. ...")
-            appendLine("반드시 다섯 단계(1단계부터 5단계까지)로만 설명하고 각 단계는 한두 문장으로 명확하게 작성하세요.")
+            appendLine("반드시 다섯 단계(1단계부터 5단계까지)로만 설명하지 않아도 되고 각 단계는 한두 문장으로 명확하게 작성하세요.")
             appendLine("재료 목록:")
             append(ingredientList)
         }

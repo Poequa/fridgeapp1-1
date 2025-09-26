@@ -1,5 +1,3 @@
-package com.example.icebox
-
 object GeminiKeys {
     /**
      * 앱에 기본으로 포함할 Gemini API 키.

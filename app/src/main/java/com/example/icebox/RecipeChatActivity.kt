@@ -2,8 +2,6 @@ package com.example.icebox
 
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -11,7 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.icebox.databinding.ActivityRecipeChatBinding
 import android.content.Intent
 import com.google.ai.client.generativeai.GenerativeModel
-import com.google.ai.client.generativeai.type.GoogleGenerativeAiException
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -47,21 +44,6 @@ class RecipeChatActivity : AppCompatActivity() {
         }
 
         loadIngredients()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.recipe_chat_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_update_api_key -> {
-                startActivity(Intent(this, GeminiApiSettingsActivity::class.java))
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     private fun loadIngredients() {
@@ -178,7 +160,7 @@ class RecipeChatActivity : AppCompatActivity() {
     private fun handleRecipeFailure(exception: Exception, items: List<FridgeItemWithName>) {
         Log.e(TAG, "Gemini request failed", exception)
         val message = when {
-            exception is GoogleGenerativeAiException && exception.message?.contains("PERMISSION_DENIED", true) == true ->
+            exception.message?.contains("PERMISSION_DENIED", true) == true ->
                 getString(R.string.recipe_chat_error_unauthorized)
             exception.message?.contains("API key", true) == true ->
                 getString(R.string.recipe_chat_error_unauthorized)

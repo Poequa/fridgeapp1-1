@@ -3,9 +3,29 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string-array name="category_array">
-    <item>전체</item>
-    <item>채소</item>
-    <item>육류</item>
-    <item>소스</item>
+        <item>전체</item>
+        <item>채소</item>
+        <item>육류</item>
+        <item>소스</item>
     </string-array>
+
+    <string name="menu_add_ingredient">재료 추가</string>
+    <string name="menu_view_fridge">재료 목록 보기</string>
+    <string name="menu_recipe_chat">레시피 보기</string>
+
+    <string name="recipe_chat_title">레시피 추천</string>
+    <string name="recipe_chat_intro">냉장고 속 재료로 만들 수 있는 요리를 추천해드릴게요.</string>
+    <string name="recipe_chat_loading_ingredients">재료 정보를 불러오는 중...</string>
+    <string name="recipe_chat_ingredients_header">현재 냉장고 재료</string>
+    <string name="recipe_chat_empty_fridge">냉장고에 등록된 재료가 없어요. 먼저 재료를 추가해주세요!</string>
+    <string name="recipe_chat_need_ingredients">재료가 있어야 레시피를 추천할 수 있어요.</string>
+    <string name="recipe_chat_api_key_hint">Gemini API 키를 입력하세요</string>
+    <string name="recipe_chat_api_key_menu">Gemini API 키 변경</string>
+    <string name="recipe_chat_missing_api_key">Gemini API 키가 설정되지 않았습니다. local.properties에 GEMINI_API_KEY를 추가한 뒤 다시 빌드해주세요.</string>
+    <string name="recipe_chat_user_prompt">냉장고 재료로 만들 수 있는 요리를 알려줘.</string>
+    <string name="recipe_chat_user_name">나</string>
+    <string name="recipe_chat_assistant_name">요알못 셰프</string>
+    <string name="recipe_chat_empty_response">답변을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.</string>
+    <string name="recipe_chat_error_generic">레시피를 생성하지 못했습니다. 네트워크 상태나 API 키를 확인한 뒤 다시 시도해주세요.</string>
+    <string name="recipe_chat_action">레시피 추천 받기</string>
 </resources>

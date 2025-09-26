@@ -1,0 +1,4 @@
+<resources>
+    <!-- Provide a fallback for the Filled MaterialButton style referenced by older layouts -->
+    <style name="Widget.MaterialComponents.Button.Filled" parent="@style/Widget.MaterialComponents.Button" />
+</resources>

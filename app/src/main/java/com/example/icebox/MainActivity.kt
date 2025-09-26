@@ -1,10 +1,8 @@
 package com.example.icebox
 
-import com.example.icebox.FridgeListActivity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.example.icebox.R
@@ -35,10 +33,11 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener { menuItem ->
+            menuItem.isChecked = true
             when (menuItem.itemId) {
                 R.id.nav_add -> startActivity(Intent(this, AddIngredientActivity::class.java))
                 R.id.nav_list -> startActivity(Intent(this, FridgeListActivity::class.java))
-                R.id.nav_recipe -> startActivity(Intent(this, RecipeWebViewActivity::class.java))
+                R.id.nav_recipe -> startActivity(Intent(this, RecipeChatActivity::class.java))
             }
             drawerLayout.closeDrawers()
             true

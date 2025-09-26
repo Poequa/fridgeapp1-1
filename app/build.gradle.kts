@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -16,9 +18,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val geminiApiKey: String = gradleLocalProperties(rootDir).getProperty("GEMINI_API_KEY", "")
+        buildConfigField("String", "GEMINI_API_KEY", "\"$geminiApiKey\"")
     }
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
         compose = true // ✅ Compose 사용 선언
     }
@@ -65,9 +71,6 @@ dependencies {
     // ✅ Lifecycle
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 
-    // ✅ WebView
-    implementation("androidx.webkit:webkit:1.8.0")
-
     // LiveData KTX 추가
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
 
@@ -77,5 +80,8 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation("androidx.compose.material3:material3:1.1.2")
+
+    implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
 }

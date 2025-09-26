@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_add -> startActivity(Intent(this, AddIngredientActivity::class.java))
                 R.id.nav_list -> startActivity(Intent(this, FridgeListActivity::class.java))
                 R.id.nav_recipe -> startActivity(Intent(this, RecipeChatActivity::class.java))
+                R.id.nav_gemini_api -> startActivity(Intent(this, GeminiApiSettingsActivity::class.java))
             }
             drawerLayout.closeDrawers()
             true

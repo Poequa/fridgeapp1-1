@@ -1,12 +1,15 @@
 package com.example.icebox
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.example.icebox.databinding.ActivityRecipeChatBinding
+import android.content.Intent
 import com.google.ai.client.generativeai.GenerativeModel
+import com.google.ai.client.generativeai.type.GoogleGenerativeAiException
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,6 +24,7 @@ class RecipeChatActivity : AppCompatActivity() {
     private val chatBuilder = StringBuilder()
 
     private var generativeModel: GenerativeModel? = null
+    private var cachedApiKey: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,32 +84,29 @@ class RecipeChatActivity : AppCompatActivity() {
             appendMessage(true, userMessage)
             setLoading(true)
             try {
-                val model = ensureGenerativeModel()
-                val answer = if (model != null) {
-                    val prompt = buildPrompt(items)
-                    val response = withContext(Dispatchers.IO) {
-                        model.generateContent(prompt)
-                    }
-                    response.text?.trim().orEmpty()
-                } else {
-                    ""
+                val model = ensureGenerativeModel() ?: run {
+                    appendMessage(false, getString(R.string.recipe_chat_missing_api_key_body))
+                    return@launch
                 }
 
+                val prompt = buildPrompt(items)
+                val response = withContext(Dispatchers.IO) {
+                    model.generateContent(prompt)
+                }
+                val answer = response.text?.trim().orEmpty()
+
                 if (answer.isBlank()) {
-                    if (model == null) {
-                        Snackbar.make(
-                            binding.root,
-                            R.string.recipe_chat_missing_api_key_fallback,
-                            Snackbar.LENGTH_LONG
-                        ).show()
-                    }
+                    Snackbar.make(
+                        binding.root,
+                        R.string.recipe_chat_empty_response,
+                        Snackbar.LENGTH_LONG
+                    ).show()
                     appendMessage(false, buildFallbackRecipe(items))
                 } else {
                     appendMessage(false, answer)
                 }
             } catch (exception: Exception) {
-                appendMessage(false, buildFallbackRecipe(items))
-                Snackbar.make(binding.root, R.string.recipe_chat_error_generic, Snackbar.LENGTH_LONG).show()
+                handleRecipeFailure(exception, items)
             } finally {
                 setLoading(false)
             }
@@ -113,11 +114,14 @@ class RecipeChatActivity : AppCompatActivity() {
     }
 
     private fun ensureGenerativeModel(): GenerativeModel? {
-        generativeModel?.let { return it }
-
-        val apiKey = BuildConfig.GEMINI_API_KEY.ifBlank { GeminiKeys.DEFAULT_API_KEY }
+        val apiKey = resolveApiKey()
         if (apiKey.isBlank()) {
+            showMissingApiKeySnackbar()
             return null
+        }
+
+        if (generativeModel != null && cachedApiKey == apiKey) {
+            return generativeModel
         }
 
         return GenerativeModel(
@@ -125,7 +129,47 @@ class RecipeChatActivity : AppCompatActivity() {
             apiKey = apiKey
         ).also { createdModel ->
             generativeModel = createdModel
+            cachedApiKey = apiKey
         }
+    }
+
+    private fun resolveApiKey(): String {
+        val savedKey = GeminiKeyStore.getSavedKey(this)
+        if (savedKey.isNotBlank()) {
+            return savedKey
+        }
+
+        val buildConfigKey = BuildConfig.GEMINI_API_KEY
+        if (!GeminiKeys.isPlaceholder(buildConfigKey)) {
+            return buildConfigKey
+        }
+
+        val bundledKey = GeminiKeys.DEFAULT_API_KEY
+        return if (GeminiKeys.isPlaceholder(bundledKey)) "" else bundledKey
+    }
+
+    private fun showMissingApiKeySnackbar() {
+        Snackbar.make(
+            binding.root,
+            R.string.recipe_chat_missing_api_key_snackbar,
+            Snackbar.LENGTH_LONG
+        ).setAction(R.string.gemini_api_settings_action) {
+            startActivity(Intent(this, GeminiApiSettingsActivity::class.java))
+        }.show()
+    }
+
+    private fun handleRecipeFailure(exception: Exception, items: List<FridgeItemWithName>) {
+        Log.e(TAG, "Gemini request failed", exception)
+        val message = when {
+            exception is GoogleGenerativeAiException && exception.message?.contains("PERMISSION_DENIED", true) == true ->
+                getString(R.string.recipe_chat_error_unauthorized)
+            exception.message?.contains("API key", true) == true ->
+                getString(R.string.recipe_chat_error_unauthorized)
+            else -> getString(R.string.recipe_chat_error_generic)
+        }
+
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
+        appendMessage(false, buildFallbackRecipe(items))
     }
 
     private fun buildFallbackRecipe(items: List<FridgeItemWithName>): String {
@@ -170,14 +214,29 @@ class RecipeChatActivity : AppCompatActivity() {
     }
 
     private fun buildPrompt(items: List<FridgeItemWithName>): String {
-        val ingredientList = items.joinToString(separator = "\n") {
+        val sortedByExpiry = items.sortedBy { it.normalizedExpiryDate() }
+        val ingredientList = sortedByExpiry.joinToString(separator = "\n") {
             "- ${it.name} (${it.quantity}개, 유통기한 ${it.expiryDate})"
+        }
+
+        val priorityList = sortedByExpiry.take(5).joinToString(separator = "\n") { item ->
+            "• ${item.name} (유통기한 ${item.expiryDate})"
+        }
+
+        val proteinCandidates = sortedByExpiry.filter { it.isProteinCandidate() }
+        val proteinGuidance = if (proteinCandidates.size > 1) {
+            proteinCandidates.joinToString(separator = ", ") { it.name }
+        } else {
+            null
         }
         return buildString {
             appendLine("당신은 한국어를 사용하는 셰프 AI입니다.")
-            appendLine("아래 재료만을 중심으로 만들 수 있는 가정식 요리 한 가지를 추천해주세요.")
-            appendLine("굳이 아래 재료들만 통해서 만들지 않아도 됍니다.")
-            appendLine("아래 재료들을 통해서 어떤 음식이 제일 괜찮을지 한 메뉴를 정해서 ")
+            appendLine("아래 재료를 활용해 가장 조화로운 가정식 요리 한 가지를 추천해주세요.")
+            appendLine("필요하다면 일부 재료는 과감히 제외해도 좋지만, 유통기한이 임박한 재료부터 활용하는 것을 우선으로 고려하세요.")
+            if (priorityList.isNotBlank()) {
+                appendLine("우선 사용 권장 재료 (유통기한 임박 순):")
+                appendLine(priorityList)
+            }
             appendLine("답변은 반드시 다음 형식을 지키세요:")
             appendLine("레시피 이름: [요리 이름]")
             appendLine("1단계. ...")
@@ -185,10 +244,52 @@ class RecipeChatActivity : AppCompatActivity() {
             appendLine("3단계. ...")
             appendLine("4단계. ...")
             appendLine("5단계. ...")
-            appendLine("반드시 다섯 단계(1단계부터 5단계까지)로만 설명하지 않아도 되고 각 단계는 한두 문장으로 명확하게 작성하세요.")
+            appendLine("반드시 다섯 단계(1단계부터 5단계까지)로만 설명하고 각 단계는 한두 문장으로 명확하게 작성하세요.")
+            appendLine("재료는 조합이 어색하면 생략해도 됩니다.")
+            appendLine("한 가지 요리에 여러 종류의 육류나 해산물을 동시에 넣지 말고, 가장 빨리 사용할 필요가 있는 단백질 한 종류를 주재료로 선택하세요.")
+            proteinGuidance?.let {
+                appendLine("특히 다음 단백질 중에서 한 가지만 선택하세요: $it")
+            }
             appendLine("재료 목록:")
             append(ingredientList)
         }
+    }
+
+    private fun FridgeItemWithName.normalizedExpiryDate(): String {
+        val raw = expiryDate
+        val normalized = raw.takeIf { EXPIRY_REGEX.matches(it) }
+        return normalized ?: "9999-12-31"
+    }
+
+    private fun FridgeItemWithName.isProteinCandidate(): Boolean {
+        val nameLower = name.lowercase()
+        val keywords = listOf(
+            "고기",
+            "돼지",
+            "돼지고기",
+            "소고기",
+            "소",
+            "닭",
+            "닭고기",
+            "계육",
+            "오리",
+            "양고기",
+            "삼겹",
+            "목살",
+            "해산물",
+            "생선",
+            "새우",
+            "오징어",
+            "문어",
+            "홍합",
+            "조개"
+        )
+        return keywords.any { keyword -> nameLower.contains(keyword) } || category.contains("육", ignoreCase = true) || category.contains("해", ignoreCase = true)
+    }
+
+    companion object {
+        private val EXPIRY_REGEX = Regex("\\d{4}-\\d{2}-\\d{2}")
+        private const val TAG = "RecipeChat"
     }
 
     private fun appendMessage(isUser: Boolean, message: String) {

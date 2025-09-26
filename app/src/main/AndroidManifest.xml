@@ -28,5 +28,6 @@
         <activity android:name=".AddIngredientActivity" />
         <activity android:name=".FridgeListActivity" />
         <activity android:name=".RecipeChatActivity" />
+        <activity android:name=".GeminiApiSettingsActivity" />
     </application>
 </manifest>

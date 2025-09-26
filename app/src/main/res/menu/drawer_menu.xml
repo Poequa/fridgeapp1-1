@@ -8,4 +8,7 @@
     <item
         android:id="@+id/nav_recipe"
         android:title="@string/menu_recipe_chat" />
+    <item
+        android:id="@+id/nav_gemini_api"
+        android:title="@string/menu_gemini_api_settings" />
 </menu>

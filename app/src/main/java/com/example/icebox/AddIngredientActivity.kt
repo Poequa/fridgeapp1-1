@@ -133,8 +133,10 @@ class AddIngredientActivity : AppCompatActivity() {
     }
 
     private fun toggleVisibility(layoutId: Int) {
-        val layout = findViewById<LinearLayout>(layoutId)
-        layout.visibility = if (layout.visibility == View.GONE) View.VISIBLE else View.GONE
+        val layout = findViewById<View>(layoutId)
+        layout?.let {
+            it.visibility = if (it.visibility == View.GONE) View.VISIBLE else View.GONE
+        }
     }
 
     private fun showAddDialog(ingredientName: String) {

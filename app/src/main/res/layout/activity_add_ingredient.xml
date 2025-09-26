@@ -41,12 +41,13 @@
                 android:orientation="horizontal"
                 android:columnCount="4"
                 android:visibility="gone"
-                android:padding="8dp">
+                android:useDefaultMargins="true"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false">
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgTomato"
@@ -63,10 +64,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgCarrot"
@@ -82,10 +81,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgLettuce"
@@ -101,10 +98,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgBaechu"
@@ -120,10 +115,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgCucumber"
@@ -139,10 +132,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgPaprika"
@@ -158,10 +149,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgOnion"
@@ -177,10 +166,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgGarlic"
@@ -196,10 +183,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgPepper"
@@ -215,10 +200,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgBroccoli"
@@ -234,10 +217,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgShiitakemushroom"
@@ -253,10 +234,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgEnokimushroom"
@@ -272,10 +251,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgMatsutakemushroom"
@@ -291,10 +268,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgButtonmushroom"
@@ -310,10 +285,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgKingoystermushroom"
@@ -329,10 +302,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgOystermushroom"
@@ -348,10 +319,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgWoodearmushroom"
@@ -367,10 +336,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgTrufflemushroom"
@@ -386,10 +353,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgZucchini"
@@ -405,10 +370,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgRadish"
@@ -424,10 +387,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgChive"
@@ -443,9 +404,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgYangbaechu"
@@ -461,9 +421,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgPotato"
@@ -479,9 +438,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgSweetpotato"
@@ -497,9 +455,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgGreenonion"
@@ -515,9 +472,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgScallion"
@@ -533,9 +489,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgSpinach"
@@ -551,9 +506,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgBokchoy"
@@ -569,9 +523,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgEggplant"
@@ -587,9 +540,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgCorn"
@@ -605,9 +557,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgBeansprout"
@@ -623,9 +574,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgMungbeansprout"
@@ -657,13 +607,13 @@
                 android:orientation="horizontal"
                 android:columnCount="4"
                 android:visibility="gone"
-                android:padding="8dp">
+                android:useDefaultMargins="true"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false">
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgBeef"
@@ -679,10 +629,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgPork"
@@ -698,10 +646,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgChicken"
@@ -717,10 +663,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgBacon"
@@ -736,10 +680,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgHam"
@@ -755,10 +697,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgSpam"
@@ -774,10 +714,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgEgg"
@@ -793,9 +731,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgDuck"
@@ -812,10 +749,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgSmokedDuck"
@@ -831,9 +766,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgChickenBreast"
@@ -849,9 +783,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgChickenwing"
@@ -868,9 +801,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgSausage"
@@ -887,9 +819,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgQuailegg"
@@ -921,13 +852,13 @@
                 android:orientation="horizontal"
                 android:columnCount="4"
                 android:visibility="gone"
-                android:padding="8dp">
+                android:useDefaultMargins="true"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false">
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgMackerel"
@@ -943,10 +874,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgPollock"
@@ -962,10 +891,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgSquid"
@@ -981,10 +908,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgShrimp"
@@ -1000,10 +925,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgCrab"
@@ -1019,10 +942,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgSalmon"
@@ -1038,9 +959,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgTuna"
@@ -1056,9 +976,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgClam"
@@ -1075,9 +994,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgMussel"
@@ -1094,9 +1012,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgWebfootoctopus"
@@ -1113,9 +1030,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgOctopus"
@@ -1132,9 +1048,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgScallop"
@@ -1167,13 +1082,13 @@
                 android:orientation="horizontal"
                 android:columnCount="4"
                 android:visibility="gone"
-                android:padding="8dp">
+                android:useDefaultMargins="true"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false">
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgKetchup"
@@ -1189,10 +1104,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgMayonnaise"
@@ -1208,10 +1121,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgSoySauce"
@@ -1227,10 +1138,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgGochujang"
@@ -1246,10 +1155,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgDoenjang"
@@ -1265,10 +1172,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgSesameOil"
@@ -1284,9 +1189,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgPerillaoil"
@@ -1303,10 +1207,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgButter"
@@ -1322,9 +1224,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgChiliPowder"
@@ -1340,9 +1241,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgOystersauce"
@@ -1359,9 +1259,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgCurrypowder"
@@ -1378,9 +1277,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgMustard"
@@ -1412,13 +1310,13 @@
                 android:orientation="horizontal"
                 android:columnCount="4"
                 android:visibility="gone"
-                android:padding="8dp">
+                android:useDefaultMargins="true"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false">
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgTofu"
@@ -1434,10 +1332,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgKimchi"
@@ -1453,10 +1349,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgMilk"
@@ -1472,10 +1366,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgYogurt"
@@ -1491,10 +1383,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgCheese"
@@ -1510,10 +1400,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgSsamjang"
@@ -1529,10 +1417,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgFrozenDumpling"
@@ -1548,9 +1434,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgUdonnoodles"
@@ -1567,9 +1452,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgBread"
@@ -1586,9 +1470,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    style="@style/IngredientCell"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgTortilla"

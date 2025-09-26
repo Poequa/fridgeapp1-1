@@ -26,6 +26,7 @@ abstract class AppDatabase : RoomDatabase() {
                             super.onCreate(db)
                             CoroutineScope(Dispatchers.IO).launch {
                                 getDatabase(context).fridgeDao().apply {
+                                    insertIngredient(Ingredient(name = "토마토", category = "채소"))
                                     insertIngredient(Ingredient(name = "당근", category = "채소"))
                                     insertIngredient(Ingredient(name = "상추", category = "채소"))
                                     insertIngredient(Ingredient(name = "배추", category = "채소"))
@@ -55,6 +56,8 @@ abstract class AppDatabase : RoomDatabase() {
                                     insertIngredient(Ingredient(name = "청경채", category = "채소"))
                                     insertIngredient(Ingredient(name = "가지", category = "채소"))
                                     insertIngredient(Ingredient(name = "옥수수", category = "채소"))
+                                    insertIngredient(Ingredient(name = "콩나물", category = "채소"))
+                                    insertIngredient(Ingredient(name = "숙주", category = "채소"))
 
                                     insertIngredient(Ingredient(name = "소고기", category = "육류"))
                                     insertIngredient(Ingredient(name = "돼지고기", category = "육류"))
@@ -81,6 +84,7 @@ abstract class AppDatabase : RoomDatabase() {
                                     insertIngredient(Ingredient(name = "홍합", category = "해산물"))
                                     insertIngredient(Ingredient(name = "쭈꾸미", category = "해산물"))
                                     insertIngredient(Ingredient(name = "낙지", category = "해산물"))
+                                    insertIngredient(Ingredient(name = "가리비", category = "해산물"))
 
                                     insertIngredient(Ingredient(name = "케찹", category = "소스"))
                                     insertIngredient(Ingredient(name = "마요네즈", category = "소스"))
@@ -88,6 +92,7 @@ abstract class AppDatabase : RoomDatabase() {
                                     insertIngredient(Ingredient(name = "고추장", category = "소스"))
                                     insertIngredient(Ingredient(name = "된장", category = "소스"))
                                     insertIngredient(Ingredient(name = "참기름", category = "소스"))
+                                    insertIngredient(Ingredient(name = "들기름", category = "소스"))
                                     insertIngredient(Ingredient(name = "버터", category = "소스"))
                                     insertIngredient(Ingredient(name = "고춧가루", category = "소스"))
                                     insertIngredient(Ingredient(name = "굴소스", category = "소스"))
@@ -104,6 +109,7 @@ abstract class AppDatabase : RoomDatabase() {
                                     insertIngredient(Ingredient(name = "우동사리", category = "기타"))
                                     insertIngredient(Ingredient(name = "식빵", category = "기타"))
                                     insertIngredient(Ingredient(name = "또띠야", category = "기타"))
+                                    insertIngredient(Ingredient(name = "냉동만두", category = "기타"))
 
 
                                 }

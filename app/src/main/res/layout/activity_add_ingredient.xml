@@ -34,11 +34,12 @@
                 android:text="채소" />
 
             <!-- 채소 하위 재료 -->
-            <LinearLayout
+            <GridLayout
                 android:id="@+id/layoutVegetables"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:columnCount="4"
                 android:visibility="gone"
                 android:padding="8dp">
 
@@ -639,7 +640,7 @@
                         android:text="숙주"
                         android:gravity="center_horizontal"/>
                 </LinearLayout>
-            </LinearLayout>
+            </GridLayout>
 
             <!-- 육류 버튼 -->
             <Button
@@ -649,11 +650,12 @@
                 android:text="육류" />
 
             <!-- 육류 하위 재료 -->
-            <LinearLayout
+            <GridLayout
                 android:id="@+id/layoutMeat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:columnCount="4"
                 android:visibility="gone"
                 android:padding="8dp">
 
@@ -902,7 +904,7 @@
                         android:text="메추리알"
                         android:gravity="center_horizontal"/>
                 </LinearLayout>
-            </LinearLayout>
+            </GridLayout>
 
             <!-- 해산물 버튼 -->
             <Button
@@ -912,11 +914,12 @@
                 android:text="해산물" />
 
             <!-- 해산물 하위 재료 -->
-            <LinearLayout
+            <GridLayout
                 android:id="@+id/layoutSeafood"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:columnCount="4"
                 android:visibility="gone"
                 android:padding="8dp">
 
@@ -1147,7 +1150,7 @@
                         android:gravity="center_horizontal"/>
                 </LinearLayout>
 
-            </LinearLayout>
+            </GridLayout>
 
             <!-- 소스 버튼 -->
             <Button
@@ -1157,11 +1160,12 @@
                 android:text="소스" />
 
             <!-- 소스 하위 재료 -->
-            <LinearLayout
+            <GridLayout
                 android:id="@+id/layoutSauce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:columnCount="4"
                 android:visibility="gone"
                 android:padding="8dp">
 
@@ -1391,7 +1395,7 @@
                         android:text="머스터드"
                         android:gravity="center_horizontal"/>
                 </LinearLayout>
-            </LinearLayout>
+            </GridLayout>
 
             <!-- 기타 버튼 -->
             <Button
@@ -1401,11 +1405,12 @@
                 android:text="기타" />
 
             <!-- 기타 하위 재료 -->
-            <LinearLayout
+            <GridLayout
                 android:id="@+id/layoutOthers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:columnCount="4"
                 android:visibility="gone"
                 android:padding="8dp">
 
@@ -1598,7 +1603,7 @@
                         android:text="또띠야"
                         android:gravity="center_horizontal"/>
                 </LinearLayout>
-            </LinearLayout>
+            </GridLayout>
 
         </LinearLayout>
     </ScrollView>

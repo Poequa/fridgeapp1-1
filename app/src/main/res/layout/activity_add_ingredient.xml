@@ -450,7 +450,7 @@
                         android:id="@+id/imgYangbaechu"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:src="@drawable/ic_cabbage2"
+                        android:src="@drawable/ic_yangbaechu"
                         android:contentDescription="양배추" />
                     <TextView
                         android:layout_width="wrap_content"
@@ -501,7 +501,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/imgGreenonion "
+                        android:id="@+id/imgGreenonion"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:src="@drawable/ic_greenonion"

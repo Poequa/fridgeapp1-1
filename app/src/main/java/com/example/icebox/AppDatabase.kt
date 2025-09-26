@@ -98,7 +98,6 @@ abstract class AppDatabase : RoomDatabase() {
                                     insertIngredient(Ingredient(name = "굴소스", category = "소스"))
                                     insertIngredient(Ingredient(name = "카레가루", category = "소스"))
                                     insertIngredient(Ingredient(name = "머스터드", category = "소스"))
-                                    insertIngredient(Ingredient(name = "올리브유", category = "소스"))
 
                                     insertIngredient(Ingredient(name = "두부", category = "기타"))
                                     insertIngredient(Ingredient(name = "김치", category = "기타"))

@@ -1,13 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.Icebox" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- 기본 테마 설정 -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/mint_primary</item>
+        <item name="colorPrimaryVariant">@color/mint_primary_dark</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <item name="android:windowBackground">@color/white</item>
-
+        <item name="colorSecondary">@color/mint_secondary</item>
+        <item name="colorSecondaryVariant">@color/mint_secondary_dark</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:windowBackground">@color/mint_surface</item>
+        <item name="android:statusBarColor">@color/mint_primary_dark</item>
+        <item name="android:navigationBarColor">@color/mint_primary</item>
+        <item name="materialButtonStyle">@style/Widget.MaterialComponents.Button</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

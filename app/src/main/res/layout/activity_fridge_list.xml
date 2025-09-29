@@ -84,7 +84,7 @@
         android:layout_margin="16dp"
         android:contentDescription="재료 추가"
         android:src="@drawable/ic_add"
-        app:backgroundTint="@color/teal_700" />
+        app:backgroundTint="@color/mint_primary" />
 
 
 </LinearLayout>

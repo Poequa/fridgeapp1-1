@@ -231,6 +231,8 @@ class RecipeChatActivity : AppCompatActivity() {
         return buildString {
             appendLine("당신은 한국어를 사용하는 셰프 AI입니다.")
             appendLine("아래 재료를 활용해 가장 조화로운 가정식 요리 한 가지를 추천해주세요.")
+            appendLine("재료는 조합이 어색하면 생략해도 됩니다.")
+            appendLine("요리는 인터넷에 있는 한국에서 가장 대중적인 한식, 일식, 양식, 중식 중에 레시피를 추천해주세요.")
             appendLine("필요하다면 일부 재료는 과감히 제외해도 좋지만, 유통기한이 임박한 재료부터 활용하는 것을 우선으로 고려하세요.")
             if (priorityList.isNotBlank()) {
                 appendLine("우선 사용 권장 재료 (유통기한 임박 순):")
@@ -243,9 +245,8 @@ class RecipeChatActivity : AppCompatActivity() {
             appendLine("3단계. ...")
             appendLine("4단계. ...")
             appendLine("5단계. ...")
-            appendLine("반드시 다섯 단계(1단계부터 5단계까지)로만 설명하고 각 단계는 한두 문장으로 명확하게 작성하세요.")
-            appendLine("재료는 조합이 어색하면 생략해도 됩니다.")
-            appendLine("한 가지 요리에 여러 종류의 육류나 해산물을 동시에 넣지 말고, 가장 빨리 사용할 필요가 있는 단백질 한 종류를 주재료로 선택하세요.")
+            appendLine("반드시 다섯 단계로만 설명하지 않아도 되고 각 단계는 한두 문장으로 명확하게 작성하세요.")
+            appendLine("가능하면 한 가지 요리에 여러 종류의 육류나 해산물을 동시에 넣지 말고, 가장 빨리 사용할 필요가 있는 단백질 한 종류를 주재료로 선택하세요.")
             proteinGuidance?.let {
                 appendLine("특히 다음 단백질 중에서 한 가지만 선택하세요: $it")
             }

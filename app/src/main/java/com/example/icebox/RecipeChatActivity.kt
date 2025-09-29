@@ -240,11 +240,11 @@ class RecipeChatActivity : AppCompatActivity() {
             }
             appendLine("답변은 반드시 다음 형식을 지키세요:")
             appendLine("레시피 이름: [요리 이름]")
-            appendLine("1단계. ...")
-            appendLine("2단계. ...")
-            appendLine("3단계. ...")
-            appendLine("4단계. ...")
-            appendLine("5단계. ...")
+            appendLine("[1단계] ...")
+            appendLine("[2단계] ...")
+            appendLine("[3단계] ...")
+            appendLine("[4단계] ...")
+            appendLine("[5단계] ...")
             appendLine("반드시 다섯 단계로만 설명하지 않아도 되고 각 단계는 한두 문장으로 명확하게 작성하세요.")
             appendLine("가능하면 한 가지 요리에 여러 종류의 육류나 해산물을 동시에 넣지 말고, 가장 빨리 사용할 필요가 있는 단백질 한 종류를 주재료로 선택하세요.")
             proteinGuidance?.let {

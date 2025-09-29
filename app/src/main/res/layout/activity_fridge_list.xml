@@ -11,14 +11,10 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:paddingStart="24dp"
-        android:paddingTop="36dp"
-        android:paddingEnd="24dp"
-        android:paddingBottom="12dp"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar"
         app:title="@string/nav_list"
-        app:titleCentered="true"
-        app:titleTextColor="@color/white"
+        app:titleTextColor="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -28,26 +24,27 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="4dp"
         android:text="내 냉장고 속 재료"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <TextView
         android:id="@+id/text_subtitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="필터와 검색으로 필요한 재료를 빠르게 찾아보세요."
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/text_title"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/text_title" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_filters"
@@ -65,7 +62,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="226dp"
+            android:layout_height="236dp"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -136,6 +133,15 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="재료 이름 검색"
+                android:inputType="text"
+                android:textColor="@color/mint_on_secondary"
+                android:textColorHint="@color/mint_on_secondary" />
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:layout_width="match_parent"
@@ -146,14 +152,6 @@
                 app:boxStrokeColor="@color/mint_primary"
                 app:startIconDrawable="@drawable/ic_search">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editSearch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="재료 이름 검색"
-                    android:inputType="text"
-                    android:textColor="@color/mint_on_secondary"
-                    android:textColorHint="@color/mint_on_secondary" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

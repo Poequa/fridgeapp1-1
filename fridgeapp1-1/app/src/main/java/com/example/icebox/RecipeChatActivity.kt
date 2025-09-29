@@ -229,26 +229,26 @@ class RecipeChatActivity : AppCompatActivity() {
             null
         }
         return buildString {
-            appendLine("당신은 한국어를 사용하는 전문 셰프 AI입니다.")
-            appendLine("아래 재료를 활용해 가장 대중적인 요리 한 가지를 추천해주세요.")
-            appendLine("추천할 요리는 반드시 실제로 존재하는 한국, 일본, 서양, 중국 요리 중 하나여야 합니다.")
-            appendLine("재료 이름을 단순히 나열해서 만든 요리명(예: '토마토 버섯 소고기 볶음')은 절대 사용하지 마세요.")
-            appendLine("예: '소고기 토마토 파스타', '버섯전골', '돼지고기 김치찌개', '오야코동' 처럼 널리 알려진 요리명을 사용하세요.")
-            appendLine("유통기한이 임박한 재료를 우선 활용하되, 조합이 어색하면 과감히 제외해도 됩니다.")
-            appendLine("가능하다면 한 가지 단백질(육류/해산물/달걀 등)과 그에 맞는 채소나 곁들임 재료만 선택하세요.")
+            appendLine("당신은 한국어를 사용하는 셰프 AI입니다.")
+            appendLine("아래 재료를 활용해 가장 조화로운 가정식 요리 한 가지를 추천해주세요.")
+            appendLine("필요하다면 일부 재료는 과감히 제외해도 좋지만, 유통기한이 임박한 재료부터 활용하는 것을 우선으로 고려하세요.")
             if (priorityList.isNotBlank()) {
                 appendLine("우선 사용 권장 재료 (유통기한 임박 순):")
                 appendLine(priorityList)
             }
             appendLine("답변은 반드시 다음 형식을 지키세요:")
-            appendLine("레시피 이름: [실제 존재하는 요리 이름]")
-            appendLine("[1단계] ...")
-            appendLine("[2단계] ...")
-            appendLine("[3단계] ...")
-            appendLine("[4단계] ...")
-            appendLine("[5단계] ...")
-            appendLine("각 단계는 한두 문장으로 명확하게 작성하세요. 단계는 3~6단계 사이로 자유롭게 조정 가능합니다.")
-            appendLine("특히 다음 단백질 중에서 한 가지만 선택하세요: ${proteinGuidance ?: "제공된 단백질 중 하나"}")
+            appendLine("레시피 이름: [요리 이름]")
+            appendLine("1단계. ...")
+            appendLine("2단계. ...")
+            appendLine("3단계. ...")
+            appendLine("4단계. ...")
+            appendLine("5단계. ...")
+            appendLine("반드시 다섯 단계(1단계부터 5단계까지)로만 설명하고 각 단계는 한두 문장으로 명확하게 작성하세요.")
+            appendLine("재료는 조합이 어색하면 생략해도 됩니다.")
+            appendLine("한 가지 요리에 여러 종류의 육류나 해산물을 동시에 넣지 말고, 가장 빨리 사용할 필요가 있는 단백질 한 종류를 주재료로 선택하세요.")
+            proteinGuidance?.let {
+                appendLine("특히 다음 단백질 중에서 한 가지만 선택하세요: $it")
+            }
             appendLine("재료 목록:")
             append(ingredientList)
         }

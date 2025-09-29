@@ -11,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 import android.util.Log
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class AddIngredientActivity : AppCompatActivity() {
 
@@ -19,6 +20,9 @@ class AddIngredientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_ingredient)
+
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        setupBottomNavigation(bottomNav, R.id.nav_add)
 
         // ✅ DB 연결
         db = AppDatabase.getDatabase(applicationContext)

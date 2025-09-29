@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/bg_main_gradient"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -87,5 +87,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/recipe_chat_action" />
+
+    <include
+        layout="@layout/include_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp" />
 
 </LinearLayout>

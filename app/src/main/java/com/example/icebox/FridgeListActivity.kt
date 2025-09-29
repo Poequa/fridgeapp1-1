@@ -44,6 +44,10 @@ class FridgeListActivity : AppCompatActivity() {
         binding = ActivityFridgeListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+
+        setupBottomNavigation(binding.bottomNav, R.id.nav_list)
+
         adapter = FridgeAdapter(mutableListOf()) { selectedItem ->
             showDeleteDialog(selectedItem)
         }

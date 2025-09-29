@@ -36,6 +36,8 @@ class RecipeChatActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
+        setupBottomNavigation(binding.bottomNav, R.id.nav_recipe)
+
         appendMessage(false, getString(R.string.recipe_chat_intro))
         binding.ingredientsList.text = getString(R.string.recipe_chat_loading_ingredients)
 

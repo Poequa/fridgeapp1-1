@@ -22,6 +22,8 @@ class GeminiApiSettingsActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
+        setupBottomNavigation(binding.bottomNav, R.id.nav_gemini_api)
+
         binding.openPortalButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.gemini_api_portal_url)))
             startActivity(intent)

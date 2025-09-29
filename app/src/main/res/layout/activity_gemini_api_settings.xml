@@ -80,8 +80,8 @@
         layout="@layout/include_bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginStart="@dimen/bottom_nav_horizontal_margin"
+        android:layout_marginEnd="@dimen/bottom_nav_horizontal_margin"
+        android:layout_marginBottom="@dimen/bottom_nav_bottom_margin" />
 
 </LinearLayout>

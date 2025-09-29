@@ -14,6 +14,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val bottomNav = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_nav)
-        setupBottomNavigation(bottomNav)
+        setupBottomNavigation(bottomNav, R.id.nav_home)
     }
 }

@@ -1,18 +1,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_add"
-        android:icon="@drawable/ic_nav_add"
+        android:icon="@drawable/nav_add_selector"
         android:title="@string/menu_add_ingredient" />
     <item
         android:id="@+id/nav_list"
-        android:icon="@drawable/ic_nav_list"
+        android:icon="@drawable/nav_list_selector"
         android:title="@string/menu_view_fridge" />
     <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/nav_home_selector"
+        android:title="@string/menu_home" />
+    <item
         android:id="@+id/nav_recipe"
-        android:icon="@drawable/ic_nav_recipe"
+        android:icon="@drawable/nav_recipe_selector"
         android:title="@string/menu_recipe_chat" />
     <item
         android:id="@+id/nav_gemini_api"
-        android:icon="@drawable/ic_nav_settings"
+        android:icon="@drawable/nav_gemini_selector"
         android:title="@string/menu_gemini_api_settings" />
 </menu>

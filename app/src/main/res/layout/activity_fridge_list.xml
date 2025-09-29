@@ -216,9 +216,9 @@
         layout="@layout/include_bottom_nav"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="@dimen/bottom_nav_horizontal_margin"
+        android:layout_marginEnd="@dimen/bottom_nav_horizontal_margin"
+        android:layout_marginBottom="@dimen/bottom_nav_bottom_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

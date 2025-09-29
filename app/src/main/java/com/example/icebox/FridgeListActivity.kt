@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.icebox.databinding.ActivityFridgeListBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -46,7 +47,8 @@ class FridgeListActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        setupBottomNavigation(binding.bottomNav, R.id.nav_list)
+        val bottomNav = binding.root.findViewById<BottomNavigationView>(R.id.bottom_nav)
+        setupBottomNavigation(bottomNav, R.id.nav_list)
 
         adapter = FridgeAdapter(mutableListOf()) { selectedItem ->
             showDeleteDialog(selectedItem)

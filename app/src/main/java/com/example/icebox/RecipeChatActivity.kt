@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.icebox.databinding.ActivityRecipeChatBinding
 import android.content.Intent
 import com.google.ai.client.generativeai.GenerativeModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -36,7 +37,8 @@ class RecipeChatActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        setupBottomNavigation(binding.bottomNav, R.id.nav_recipe)
+        val bottomNav = binding.root.findViewById<BottomNavigationView>(R.id.bottom_nav)
+        setupBottomNavigation(bottomNav, R.id.nav_recipe)
 
         appendMessage(false, getString(R.string.recipe_chat_intro))
         binding.ingredientsList.text = getString(R.string.recipe_chat_loading_ingredients)

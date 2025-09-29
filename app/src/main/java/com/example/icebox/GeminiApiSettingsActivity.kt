@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.icebox.databinding.ActivityGeminiApiSettingsBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 
 class GeminiApiSettingsActivity : AppCompatActivity() {
@@ -22,7 +23,8 @@ class GeminiApiSettingsActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        setupBottomNavigation(binding.bottomNav, R.id.nav_gemini_api)
+        val bottomNav = binding.root.findViewById<BottomNavigationView>(R.id.bottom_nav)
+        setupBottomNavigation(bottomNav, R.id.nav_gemini_api)
 
         binding.openPortalButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.gemini_api_portal_url)))

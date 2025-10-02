@@ -19,7 +19,6 @@
     <string name="nav_list">재료 목록</string>
 
     <string name="recipe_chat_title">레시피 추천</string>
-    <string name="recipe_chat_intro">냉장고 속 재료로 만들 수 있는 요리를 추천해드릴게요.</string>
     <string name="recipe_chat_loading_ingredients">재료 정보를 불러오는 중...</string>
     <string name="recipe_chat_ingredients_header">현재 냉장고 재료</string>
     <string name="recipe_chat_history_header">추천 결과</string>
@@ -28,6 +27,7 @@
     <string name="recipe_chat_api_key_hint">Gemini API 키를 입력하세요</string>
     <string name="recipe_chat_api_key_menu">Gemini API 키 설정</string>
     <string name="recipe_chat_user_prompt">냉장고 재료로 만들 수 있는 요리를 알려줘.</string>
+    <string name="recipe_chat_user_prompt_another">방금 추천한 요리를 제외하고 다른 메뉴도 추천해줘.</string>
     <string name="recipe_chat_user_label">나</string>
     <string name="recipe_chat_assistant_label">요알못 셰프</string>
     <string name="recipe_chat_empty_response_message">답변을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.</string>
@@ -36,6 +36,7 @@
     <string name="recipe_chat_missing_api_key_body">API 키가 비어 있어서 레시피를 만들 수 없어요. 왼쪽 메뉴에서 &quot;Gemini API 등록&quot;을 선택해 키를 저장한 뒤 다시 시도해주세요.</string>
     <string name="recipe_chat_error_unauthorized">Gemini API 키 인증에 실패했어요. 키가 올바른지 다시 확인해주세요.</string>
     <string name="recipe_chat_action">레시피 추천 받기</string>
+    <string name="recipe_chat_action_next">다른 레시피 추천</string>
     <string name="recipe_chat_fallback_notice">※ 실시간 레시피 생성에 실패해 임시 레시피를 안내드려요.</string>
     <string name="recipe_chat_fallback_recipe_name_generic">즉석 한 냄비 요리</string>
     <string name="recipe_chat_fallback_recipe_name_single">%1$s 활용 한 냄비 요리</string>

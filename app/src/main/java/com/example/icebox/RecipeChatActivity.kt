@@ -3,11 +3,18 @@ package com.example.icebox
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.content.Intent
+import android.graphics.Typeface
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
+import android.text.style.RelativeSizeSpan
+import android.text.style.StyleSpan
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.example.icebox.databinding.ActivityRecipeChatBinding
-import android.content.Intent
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -21,7 +28,9 @@ class RecipeChatActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecipeChatBinding
     private var fridgeItems: List<FridgeItemWithName> = emptyList()
-    private val chatBuilder = StringBuilder()
+    private val chatBuilder = SpannableStringBuilder()
+    private var hasGeneratedRecipe = false
+    private var lastRecipeName: String? = null
 
     private var generativeModel: GenerativeModel? = null
     private var cachedApiKey: String? = null
@@ -40,7 +49,6 @@ class RecipeChatActivity : AppCompatActivity() {
         val bottomNav = binding.root.findViewById<BottomNavigationView>(R.id.bottom_nav)
         setupBottomNavigation(bottomNav, R.id.nav_recipe)
 
-        appendMessage(false, getString(R.string.recipe_chat_intro))
         binding.ingredientsList.text = getString(R.string.recipe_chat_loading_ingredients)
 
         binding.generateButton.setOnClickListener {
@@ -90,21 +98,30 @@ class RecipeChatActivity : AppCompatActivity() {
                     return@launch
                 }
 
-                val prompt = buildPrompt(items)
+                appendMessage(true, getString(
+                    if (hasGeneratedRecipe) R.string.recipe_chat_user_prompt_another else R.string.recipe_chat_user_prompt
+                ))
+
+                val prompt = buildPrompt(items, lastRecipeName)
                 val response = withContext(Dispatchers.IO) {
                     model.generateContent(prompt)
                 }
                 val answer = response.text?.trim().orEmpty()
-
-                if (answer.isBlank()) {
+                val finalAnswer = if (answer.isBlank()) {
                     Snackbar.make(
                         binding.root,
                         R.string.recipe_chat_empty_response_message,
                         Snackbar.LENGTH_LONG
                     ).show()
-                    appendMessage(false, buildFallbackRecipe(items))
+                    buildFallbackRecipe(items)
                 } else {
-                    appendMessage(false, answer)
+                    answer
+                }
+                appendMessage(false, finalAnswer)
+                lastRecipeName = extractRecipeName(finalAnswer) ?: lastRecipeName
+                if (!hasGeneratedRecipe && finalAnswer.isNotBlank()) {
+                    hasGeneratedRecipe = true
+                    binding.generateButton.text = getString(R.string.recipe_chat_action_next)
                 }
             } catch (exception: Exception) {
                 handleRecipeFailure(exception, items)
@@ -170,7 +187,13 @@ class RecipeChatActivity : AppCompatActivity() {
         }
 
         Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
-        appendMessage(false, buildFallbackRecipe(items))
+        val fallback = buildFallbackRecipe(items)
+        appendMessage(false, fallback)
+        lastRecipeName = extractRecipeName(fallback) ?: lastRecipeName
+        if (!hasGeneratedRecipe && fallback.isNotBlank()) {
+            hasGeneratedRecipe = true
+            binding.generateButton.text = getString(R.string.recipe_chat_action_next)
+        }
     }
 
     private fun buildFallbackRecipe(items: List<FridgeItemWithName>): String {
@@ -214,7 +237,7 @@ class RecipeChatActivity : AppCompatActivity() {
         }
     }
 
-    private fun buildPrompt(items: List<FridgeItemWithName>): String {
+    private fun buildPrompt(items: List<FridgeItemWithName>, excludedRecipe: String?): String {
         val sortedByExpiry = items.sortedBy { it.normalizedExpiryDate() }
         val ingredientList = sortedByExpiry.joinToString(separator = "\n") {
             "- ${it.name} (${it.quantity}개, 유통기한 ${it.expiryDate})"
@@ -241,6 +264,9 @@ class RecipeChatActivity : AppCompatActivity() {
             if (priorityList.isNotBlank()) {
                 appendLine("우선 사용 권장 재료 (유통기한 임박 순):")
                 appendLine(priorityList)
+            }
+            if (!excludedRecipe.isNullOrBlank()) {
+                appendLine("이전에 추천한 '${excludedRecipe.trim()}'은(는) 제외하고 새로운 요리를 추천해주세요.")
             }
             appendLine("답변은 반드시 다음 형식을 지키세요:")
             appendLine("레시피 이름: [실제 존재하는 요리 이름]")
@@ -303,8 +329,21 @@ class RecipeChatActivity : AppCompatActivity() {
         } else {
             getString(R.string.recipe_chat_assistant_label)
         }
-        chatBuilder.append(prefix).append("\n").append(message.trim())
-        binding.chatHistory.text = chatBuilder.toString()
+        val prefixStart = chatBuilder.length
+        chatBuilder.append(prefix)
+        chatBuilder.setSpan(
+            StyleSpan(Typeface.BOLD),
+            prefixStart,
+            chatBuilder.length,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        chatBuilder.append("\n")
+        val messageStart = chatBuilder.length
+        chatBuilder.append(message.trim())
+        if (!isUser) {
+            styleRecipeResult(messageStart, chatBuilder.length)
+        }
+        binding.chatHistory.text = chatBuilder
         binding.chatScroll.post {
             binding.chatScroll.fullScroll(View.FOCUS_DOWN)
         }
@@ -313,5 +352,52 @@ class RecipeChatActivity : AppCompatActivity() {
     private fun setLoading(isLoading: Boolean) {
         binding.progressIndicator.isVisible = isLoading
         binding.generateButton.isEnabled = !isLoading
+    }
+
+    private fun styleRecipeResult(messageStart: Int, messageEnd: Int) {
+        if (messageEnd <= messageStart) return
+        val accentColor = ContextCompat.getColor(this, R.color.mint_primary)
+        val messageText = chatBuilder.subSequence(messageStart, messageEnd).toString()
+        val regex = Regex("레시피 이름\\s*[:：]\\s*(.+)")
+        val match = regex.find(messageText)
+        if (match != null) {
+            val lineStart = messageStart + match.range.first
+            val lineEnd = messageStart + match.range.last + 1
+            chatBuilder.setSpan(
+                StyleSpan(Typeface.BOLD),
+                lineStart,
+                lineEnd,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            chatBuilder.setSpan(
+                RelativeSizeSpan(1.08f),
+                lineStart,
+                lineEnd,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            chatBuilder.setSpan(
+                ForegroundColorSpan(accentColor),
+                lineStart,
+                lineEnd,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
+        // 강조용으로 단계 머리표도 굵게 처리
+        val stepRegex = Regex("\\[[0-9]+단계]", RegexOption.MULTILINE)
+        stepRegex.findAll(messageText).forEach { result ->
+            val spanStart = messageStart + result.range.first
+            val spanEnd = messageStart + result.range.last + 1
+            chatBuilder.setSpan(
+                StyleSpan(Typeface.BOLD),
+                spanStart,
+                spanEnd,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
+    }
+
+    private fun extractRecipeName(answer: String): String? {
+        val regex = Regex("레시피 이름\\s*[:：]\\s*(.+)")
+        return regex.find(answer)?.groupValues?.get(1)?.trim()?.takeIf { it.isNotBlank() }
     }
 }

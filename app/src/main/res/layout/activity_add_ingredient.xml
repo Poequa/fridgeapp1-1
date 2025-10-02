@@ -22,133 +22,142 @@
         android:padding="16dp"
         android:paddingBottom="24dp">
 
-        <LinearLayout
-            android:id="@+id/categoryContainer"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="4dp">
 
-            <!-- 채소 버튼 -->
-            <Button
-                android:id="@+id/btnVegetables"
+            <LinearLayout
+                android:id="@+id/categoryContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="채소" />
+                android:orientation="vertical"
+                android:padding="20dp">
 
-            <!-- 채소 하위 재료 -->
-            <GridLayout
-                android:id="@+id/layoutVegetables"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:columnCount="4"
-                android:visibility="gone"
-                android:useDefaultMargins="true"
-                android:alignmentMode="alignMargins"
-                android:columnOrderPreserved="false">
+                <!-- 채소 버튼 -->
+                <Button
+                    android:id="@+id/btnVegetables"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="채소" />
 
-                <LinearLayout
-                    style="@style/IngredientCell"
-                    android:orientation="vertical">
+                <!-- 채소 하위 재료 -->
+                <GridLayout
+                    android:id="@+id/layoutVegetables"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:columnCount="4"
+                    android:visibility="gone"
+                    android:useDefaultMargins="true"
+                    android:alignmentMode="alignMargins"
+                    android:columnOrderPreserved="false">
 
-                    <ImageView
-                        android:id="@+id/imgTomato"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:src="@drawable/ic_tomato"
-                        android:contentDescription="토마토" />
+                    <LinearLayout
+                        style="@style/IngredientCell"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="토마토"
-                        android:gravity="center_horizontal"/>
-                </LinearLayout>
+                        <ImageView
+                            android:id="@+id/imgTomato"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:src="@drawable/ic_tomato"
+                            android:contentDescription="토마토" />
 
-                <LinearLayout
-                    style="@style/IngredientCell"
-                    android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="토마토"
+                            android:gravity="center_horizontal"/>
+                    </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/imgCarrot"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:src="@drawable/ic_carrot"
-                        android:contentDescription="당근" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="당근"
-                        android:gravity="center_horizontal"/>
-                </LinearLayout>
+                    <LinearLayout
+                        style="@style/IngredientCell"
+                        android:orientation="vertical">
 
-                <LinearLayout
-                    style="@style/IngredientCell"
-                    android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/imgCarrot"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:src="@drawable/ic_carrot"
+                            android:contentDescription="당근" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="당근"
+                            android:gravity="center_horizontal"/>
+                    </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/imgLettuce"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:src="@drawable/ic_lettuce"
-                        android:contentDescription="상추" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="상추"
-                        android:gravity="center_horizontal"/>
-                </LinearLayout>
+                    <LinearLayout
+                        style="@style/IngredientCell"
+                        android:orientation="vertical">
 
-                <LinearLayout
-                    style="@style/IngredientCell"
-                    android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/imgLettuce"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:src="@drawable/ic_lettuce"
+                            android:contentDescription="상추" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="상추"
+                            android:gravity="center_horizontal"/>
+                    </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/imgBaechu"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:src="@drawable/ic_cabbage"
-                        android:contentDescription="배추" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="배추"
-                        android:gravity="center_horizontal"/>
-                </LinearLayout>
+                    <LinearLayout
+                        style="@style/IngredientCell"
+                        android:orientation="vertical">
 
-                <LinearLayout
-                    style="@style/IngredientCell"
-                    android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/imgBaechu"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:src="@drawable/ic_cabbage"
+                            android:contentDescription="배추" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="배추"
+                            android:gravity="center_horizontal"/>
+                    </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/imgCucumber"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:src="@drawable/ic_cucumber"
-                        android:contentDescription="오이" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="오이"
-                        android:gravity="center_horizontal"/>
-                </LinearLayout>
+                    <LinearLayout
+                        style="@style/IngredientCell"
+                        android:orientation="vertical">
 
-                <LinearLayout
-                    style="@style/IngredientCell"
-                    android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/imgCucumber"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:src="@drawable/ic_cucumber"
+                            android:contentDescription="오이" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="오이"
+                            android:gravity="center_horizontal"/>
+                    </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/imgPaprika"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:src="@drawable/ic_paprika"
-                        android:contentDescription="파프리카" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="파프리카"
-                        android:gravity="center_horizontal"/>
-                </LinearLayout>
+                    <LinearLayout
+                        style="@style/IngredientCell"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imgPaprika"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:src="@drawable/ic_paprika"
+                            android:contentDescription="파프리카" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="파프리카"
+                            android:gravity="center_horizontal"/>
+                    </LinearLayout>
 
                 <LinearLayout
                     style="@style/IngredientCell"
@@ -1490,7 +1499,8 @@
                 </LinearLayout>
             </GridLayout>
 
-        </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </ScrollView>
     <include
         layout="@layout/include_bottom_nav"

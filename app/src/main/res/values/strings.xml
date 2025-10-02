@@ -10,10 +10,10 @@
     </string-array>
 
     <string name="menu_add_ingredient">재료 추가</string>
-    <string name="menu_view_fridge">재료 목록 보기</string>
+    <string name="menu_view_fridge">내 냉장고</string>
     <string name="menu_home">홈</string>
     <string name="menu_recipe_chat">레시피 보기</string>
-    <string name="menu_gemini_api_settings">Gemini API</string>
+    <string name="menu_gemini_api_settings">설정</string>
     <string name="nav_list">재료 목록</string>
 
     <string name="recipe_chat_title">레시피 추천</string>

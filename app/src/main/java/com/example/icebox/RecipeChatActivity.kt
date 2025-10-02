@@ -83,8 +83,6 @@ class RecipeChatActivity : AppCompatActivity() {
         }
 
         lifecycleScope.launch {
-            val userMessage = getString(R.string.recipe_chat_user_prompt)
-            appendMessage(true, userMessage)
             setLoading(true)
             try {
                 val model = ensureGenerativeModel() ?: run {

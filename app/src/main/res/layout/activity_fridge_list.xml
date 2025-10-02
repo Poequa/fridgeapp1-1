@@ -74,7 +74,7 @@
                     <Spinner
                         android:id="@+id/spinnerCategory"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
 
                         android:background="@drawable/bg_spinner"
                         android:paddingStart="12dp"
@@ -102,7 +102,7 @@
                     <Spinner
                         android:id="@+id/spinnerSort"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
 
                         android:background="@drawable/bg_spinner"
                         android:paddingStart="12dp"
@@ -113,10 +113,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editSearch"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:hint="재료 이름 검색"
                 android:inputType="text"
-                android:paddingTop="20dp"
+                android:paddingTop="5dp"
                 android:textColor="@color/mint_on_secondary"
                 android:textColorHint="@color/mint_on_secondary" />
 
@@ -175,8 +175,8 @@
         app:layout_constraintBottom_toTopOf="@id/bottom_nav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="96dp" />
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="32dp" />
 
     <include
         layout="@layout/include_bottom_nav"

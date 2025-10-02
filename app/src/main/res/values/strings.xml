@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">요알못</string>
+    <string name="app_logo_wordmark">요 알 못</string>
+    <string name="app_logo_content_description">앱 로고</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string-array name="category_array">
@@ -25,10 +27,10 @@
     <string name="recipe_chat_api_key_hint">Gemini API 키를 입력하세요</string>
     <string name="recipe_chat_api_key_menu">Gemini API 키 설정</string>
     <string name="recipe_chat_user_prompt">냉장고 재료로 만들 수 있는 요리를 알려줘.</string>
-    <string name="recipe_chat_user_name">나</string>
-    <string name="recipe_chat_assistant_name">요알못 셰프</string>
-    <string name="recipe_chat_empty_response">답변을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.</string>
-    <string name="recipe_chat_error_generic">레시피를 생성하지 못했습니다. 네트워크 상태나 API 키를 확인한 뒤 다시 시도해주세요.</string>
+    <string name="recipe_chat_user_label">나</string>
+    <string name="recipe_chat_assistant_label">요알못 셰프</string>
+    <string name="recipe_chat_empty_response_message">답변을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.</string>
+    <string name="recipe_chat_error_generic_message">레시피를 생성하지 못했습니다. 네트워크 상태나 API 키를 확인한 뒤 다시 시도해주세요.</string>
     <string name="recipe_chat_missing_api_key_snackbar">Gemini API 키가 설정되지 않았어요. 아래 버튼을 눌러 바로 등록할 수 있어요.</string>
     <string name="recipe_chat_missing_api_key_body">API 키가 비어 있어서 레시피를 만들 수 없어요. 왼쪽 메뉴에서 &quot;Gemini API 등록&quot;을 선택해 키를 저장한 뒤 다시 시도해주세요.</string>
     <string name="recipe_chat_error_unauthorized">Gemini API 키 인증에 실패했어요. 키가 올바른지 다시 확인해주세요.</string>
@@ -54,4 +56,9 @@
     <string name="gemini_api_settings_cleared">저장된 Gemini API 키를 삭제했어요.</string>
     <string name="gemini_api_settings_action">지금 등록하기</string>
     <string name="gemini_api_portal_url">https://aistudio.google.com/app/apikey</string>
+    <string name="gemini_tip_title">Gemini API 연동 상태</string>
+    <string name="gemini_tip_title_need_setup">Gemini API 연동 필요</string>
+    <string name="gemini_tip_title_connected">Gemini API 사용 준비 완료</string>
+    <string name="gemini_tip_body_need_setup">설정에서 Gemini API를 연동해주세요.</string>
+    <string name="gemini_tip_body_connected">Gemini API 연동이 완료되었습니다.</string>
 </resources>

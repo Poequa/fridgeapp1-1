@@ -101,7 +101,7 @@ class RecipeChatActivity : AppCompatActivity() {
                 if (answer.isBlank()) {
                     Snackbar.make(
                         binding.root,
-                        R.string.recipe_chat_empty_response,
+                        R.string.recipe_chat_empty_response_message,
                         Snackbar.LENGTH_LONG
                     ).show()
                     appendMessage(false, buildFallbackRecipe(items))
@@ -168,7 +168,7 @@ class RecipeChatActivity : AppCompatActivity() {
                 getString(R.string.recipe_chat_error_unauthorized)
             exception.message?.contains("API key", true) == true ->
                 getString(R.string.recipe_chat_error_unauthorized)
-            else -> getString(R.string.recipe_chat_error_generic)
+            else -> getString(R.string.recipe_chat_error_generic_message)
         }
 
         Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
@@ -300,7 +300,11 @@ class RecipeChatActivity : AppCompatActivity() {
         if (chatBuilder.isNotEmpty()) {
             chatBuilder.append("\n\n")
         }
-        val prefix = if (isUser) getString(R.string.recipe_chat_user_name) else getString(R.string.recipe_chat_assistant_name)
+        val prefix = if (isUser) {
+            getString(R.string.recipe_chat_user_label)
+        } else {
+            getString(R.string.recipe_chat_assistant_label)
+        }
         chatBuilder.append(prefix).append("\n").append(message.trim())
         binding.chatHistory.text = chatBuilder.toString()
         binding.chatScroll.post {
